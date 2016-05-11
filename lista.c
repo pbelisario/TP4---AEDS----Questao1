@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "lista.h"
 #include <time.h>
+#include "lista.h"
 
 
 struct Nodo{
@@ -61,8 +61,10 @@ void matarSoldado(sentinela *s, int numeroDeSoldados) {
     free(aux->prox);
     aux->prox = s->prim;
   }
+  printf("\n" );
 }
 //faz o nodo anterior apontar do que será removido para o sucessor dele
+//não remove o nodo que estiver na primeria posição
 void removerElemento(nodo *queSeraRemovido, nodo *anterior){
   anterior->prox = queSeraRemovido->prox;
   free(queSeraRemovido);
@@ -87,13 +89,13 @@ void inserirElemento (nodo *n, sentinela *s){
 }
 
 void imprimirElemento (nodo *n){
-  printf("%d\n",  n->Soldado);
+  printf("%d ",  n->Soldado);
 }
 
 void imprimirlista(sentinela *s){
   nodo *aux;
   aux = s->prim;
-  printf("%s\n", "Soldados restantes");
+  printf("%s:\t", "Soldados restantes");
   while (aux->prox != s->prim){
     imprimirElemento(aux);
     aux = aux->prox;
@@ -103,7 +105,7 @@ void imprimirlista(sentinela *s){
 int sortearSoldado(int numeroDeSoldados){
   //como não há o soldado 0 soma-se 1 ao resto
   int Soldado = ((rand()%numeroDeSoldados) + 1);
-  printf("Soldado que começará a contagem = %d\n", Soldado );
+  printf("\nSoldado que começará a contagem é o %d\n", Soldado );
   return Soldado;
 }
 
